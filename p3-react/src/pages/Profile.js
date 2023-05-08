@@ -1,6 +1,8 @@
+import React from 'react'
+
 export default function Profile (){
     return(<>
-    <h1>ProductListings</h1>
+    <h1>Profile</h1>
     </>)
     
 }

@@ -6,6 +6,7 @@ import ShoppingCart from "./pages/ShoppingCart";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -29,16 +30,19 @@ function App() {
                   <Link className="nav-link" to="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/shopping-cart">Shopping Cart</Link>
+                  <Link className="nav-link" to="/shopping-cart">Shopping Cart</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/profile">Profile</Link>
+                  <Link className="nav-link" to="/profile">Profile</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/login">Log In</Link>
+                  <Link className="nav-link" to="/login">Log In</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to="/signup"></Link>
+                  <Link className="nav-link" to="/signup"></Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/product-details"></Link>
                 </li>
               </ul>
               <form className="d-flex">
@@ -70,13 +74,17 @@ function App() {
             <SignUp />
           } />
 
+          <Route path="/product-details/:product_id" element={
+            <ProductDetails />
+          } />
+
         </Routes>
-          <div className="container">
-        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-          <div className="col-md-4 d-flex align-items-center">
-            <span className="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
-          </div>
-        </footer>
+        <div className="container">
+          <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div className="col-md-4 d-flex align-items-center">
+              <span className="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+            </div>
+          </footer>
         </div>
       </Router>
     </div>

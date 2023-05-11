@@ -76,7 +76,7 @@ export default function ProductListings() {
                             <Col xs={12} md={6} lg={6} xl={4}>
                                 <Card id="card-animation" className="h-100 rounded-3 shadow">
 
-                                    <Link to={"/" + p.id} className="text-reset text-decoration-none" >
+                                    <Link to={"/product-details/" + p.id} className="text-reset text-decoration-none" >
 
                                         <Card.Img variant="top" src={p.image_url} />
                                         <div id="card-cta">

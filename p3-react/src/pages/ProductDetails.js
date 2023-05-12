@@ -27,18 +27,18 @@ export default function ProductDetails() {
         if (localStorage.getItem("accessToken")) {
             // console.log(localStorage.getItem("accessToken"))
             // let accessToken = localStorage.getItem("accessToken")
-      
+
             console.log(product_id)
             try {
 
                 console.log(`/api/cart/${product_id}/add`)
                 let response = await axios.post(BASE_URL + `/api/cart/${product_id}/add`,
-                {},
-                {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                })
+                    {},
+                    {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                        }
+                    })
                 console.log(response.data);
                 toast.success("Successfully added to cart");
                 return true;
@@ -56,12 +56,36 @@ export default function ProductDetails() {
 
     return (<>
         <h1>Product Details</h1>
+        <div>
+            <Container className="p-5">
+                <div className="mx-auto">
+                    <nav aria-label="breadcrumb d-flex justify-content-center mb-2">
+                        <ol className="breadcrumb d-flex justify-content-center">
+                            <li className="breadcrumb-item text-secondary"><a className="text-reset text-decoration-none" href="/">Air-conditioning</a></li>
+                            <li className="text-dark breadcrumb-item active" aria-current="page">{currentProduct.product?.name}</li>
+                        </ol>
+                    </nav>
+                </div>
 
-        {currentProduct.name}
-        <div className="d-grid mt-3 mb-4">
-            <Button onClick={() => { addToCart() }}>ADD TO CART</Button>
+                {currentProduct.product?.map((a) =>
+                    <img className="img-fluid" src={a.image_url} />
+                )}
+                <h2>{currentProduct.name}</h2>
+                <p>SGD:{currentProduct.cost}</p>
+                <p>Brand:{currentProduct.brand?.name}</p>
+                <p>Category:{currentProduct.category?.name}</p>
+                <p>Application:{currentProduct.application?.name}</p>
+                <p>Features:{currentProduct.tag?.map((p, index) =>
+                                    index === currentProduct.tag?.length - 1 ? <span>{p.name}</span> : <span>{p.name}, </span>
+                                )}</p>
+                <p>Description{currentProduct.description}</p>
+                <p>Warranty:{currentProduct.warranty}</p>
+               
+                <div className="d-grid mt-3 mb-4">
+                    <Button onClick={() => { addToCart() }}>ADD TO CART</Button>
+                </div>
+            </Container>
         </div>
-
     </>)
 
 }

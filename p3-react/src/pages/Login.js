@@ -14,7 +14,7 @@ export default function Login() {
     const navigate = useNavigate();
 
     const [formState, setFormState] = useState({
-        name: "",
+        // name: "",
         email: "",
         password: ""
     })
@@ -40,7 +40,7 @@ export default function Login() {
 
     async function doLogin() {
         console.log('do login');
-        let response = await axios.post(BASE_URL + '/api/users/login' , {
+        let response = await axios.post(BASE_URL + '/api/users/login', {
             email: formState.email,
             password: formState.password
         });
@@ -49,6 +49,7 @@ export default function Login() {
             localStorage.setItem("accessToken", response.data.accessToken);
             localStorage.setItem("refreshToken", response.data.refreshToken);
             localStorage.setItem("id", response)
+            // navigate("/profile")
         } else {
             alert('Login failed.');
         }
@@ -64,7 +65,7 @@ export default function Login() {
     return (<>
         <h1>Member Login</h1>
         <h2>Please enter your email and password to access your account</h2>
-        <div>
+        {/* <div>
             <label>Name:</label>
             <input type="text"
                 value={formState.name}
@@ -73,7 +74,7 @@ export default function Login() {
                 onChange={updateFormField}
                 className="form-control"
             />
-        </div>
+        </div> */}
         <div>
             <label>Email:</label>
             <input type="text"

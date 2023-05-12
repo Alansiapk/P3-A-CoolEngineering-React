@@ -2,7 +2,7 @@ import React, { useState, useContext, useCallback } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
-import { UserContext } from '../context/UserContext';
+// import { UserContext } from '../context/UserContext';
 
 const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
 
@@ -19,7 +19,7 @@ export default function Login() {
         password: ""
     })
 
-    const value = useContext(UserContext);
+    // const value = useContext(UserContext);
 
     // const updateFormField=(e)=>{
     //     setFormState({
@@ -49,7 +49,7 @@ export default function Login() {
             localStorage.setItem("accessToken", response.data.accessToken);
             localStorage.setItem("refreshToken", response.data.refreshToken);
             localStorage.setItem("id", response)
-            // navigate("/profile")
+            navigate("/profile")
         } else {
             alert('Login failed.');
         }

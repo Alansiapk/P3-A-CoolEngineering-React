@@ -1,36 +1,74 @@
-import React from 'react'
-import{useLocation} from "react-router-dom";
-import { useState, useCallback } from 'react';
-import {useNavigate} from 'react-router-dom'; 
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import axios from 'axios';
+import { Container, Button } from 'react-bootstrap';
 
-export default function Profile (){
-    const location = useLocation();
-    
+const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
+
+export default function Profile() {
 
     // const name= location.state.name;
     // const email = location.state.email;
     // const password= location.state.password;
-    
-   const{name, email} = location.state.formState
 
-    return(<>
-    <h1>Profile</h1>
-    <div className="alert alert-success bm-3">
-        Welcome to A-Cool Engineering
-    </div>
-    <div>
-        Here is your profile details
-        <ul className = "list-group">
-        <li className = "list-group-item">
-            Name:{name}
-        </li>
-        <li className = "list-group-item">
-            Email:{email}
-        </li>
-        </ul>
-    
-    </div>
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [loggedIn, setLoggedIn] = useState(false)
+
+    //load current user
+    useEffect(() => {
+        if (localStorage.getItem('id') !== null) {
+            console.log(localStorage.getItem('accessToken'));
+            const fetchProfile = async () => {
+                let response = await axios.get(BASE_URL + "/api/users/profile", {
+                    headers: {
+                        authorization: "Bearer " + localStorage.getItem('accessToken')
+                    }
+                });
+
+                console.log(response.data)
+
+                setFirstName(response.data.first_name)
+                setLastName(response.data.last_name)
+                setEmail(response.data.email)
+            }
+            fetchProfile();
+            setLoggedIn(true)
+        }
+    }, [])
+
+    // logout
+    const logout = async () => {
+        const response = await axios.post(BASE_URL + "/api/users/logout", {
+            'refreshToken': localStorage.getItem('refreshToken')
+        })
+
+        if (response.data) {
+            localStorage.clear()
+        }
+        setLoggedIn(false)
+    }
+
+
+    return (<>
+        <div>
+            {loggedIn === true ?
+                <Container className="pt-5 mt-5">
+                    <div className='text-center pt-5 mt-5'>
+                        <h2>Welcome {firstName} {lastName}</h2>
+                        <h2>Email: {email}</h2>
+                        <Button className="mt-3 me-2" variant="dark"><Link className="text-decoration-none text-reset" to="/orders">View Past Orders</Link></Button>
+                        <Button variant="outline-dark" className="mt-3" onClick={logout}><Link className="text-decoration-none text-reset" to="/login">Log Out</Link></Button>
+                    </div>
+                </Container>
+
+                :
+                null
+            }
+
+        </div>
 
     </>)
-    
+
 }

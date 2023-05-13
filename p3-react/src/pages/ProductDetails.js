@@ -25,7 +25,7 @@ export default function ProductDetails() {
 
     const addToCart = async () => {
         if (localStorage.getItem("accessToken")) {
-            // console.log(localStorage.getItem("accessToken"))
+             console.log(localStorage.getItem("accessToken"))
             // let accessToken = localStorage.getItem("accessToken")
 
             console.log(product_id)
@@ -33,7 +33,11 @@ export default function ProductDetails() {
 
                 console.log(`/api/cart/${product_id}/add`)
                 let response = await axios.post(BASE_URL + `/api/cart/${product_id}/add`,
-                    {},
+                    {
+                        "quantity": 1,
+                        "product_id": product_id,
+                        "user_id": localStorage.getItem("id")
+                    },
                     {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem("accessToken")}`

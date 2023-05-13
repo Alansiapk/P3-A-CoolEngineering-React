@@ -44,11 +44,12 @@ export default function Login() {
             email: formState.email,
             password: formState.password
         });
-        console.log(response)
+        console.log(response);
+        console.log('response data',response.data)
+
         if (response.status == 200 && response.data.accessToken) {
             localStorage.setItem("accessToken", response.data.accessToken);
             localStorage.setItem("refreshToken", response.data.refreshToken);
-            localStorage.setItem("id", response)
             navigate("/profile")
         } else {
             alert('Login failed.');

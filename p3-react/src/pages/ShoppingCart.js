@@ -26,11 +26,23 @@ export default function ShoppingCart() {
     const user_id = localStorage.getItem("id");
     const fetch = async () => {
 
-        const response = await axios.get(BASE_URL + "/api/cart", {
+        // const response = await axios.get(BASE_URL + "/api/cart",
+        // {
+        //     "user_id": user_id
+        // },
+        // {
+        //     headers: {
+        //         authorization: `Bearer ${localStorage.getItem("accessToken")}`
+        //     }
+        // });
+
+        let response = await axios.get(BASE_URL + `/api/cart/${user_id}`,
+        {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
-        });
+        })
+
         const quantity = {}
         for (let r of response.data) {
             quantity[r.product_id] = r.quantity
@@ -43,7 +55,7 @@ export default function ShoppingCart() {
     }
 
     const deleteCartItem = async (productId) => {
-        const response = await axios.post(BASE_URL + `/api/cart/${productId}/delete`, {}, {
+        const response = await axios.post(BASE_URL + `/api/cart/${productId}/delete`, {"user_id": localStorage.getItem("id")}, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -68,7 +80,8 @@ export default function ShoppingCart() {
         // const variantId = e.target.name
         // const quantity = quantit
         console.log('update', productId, quantity)
-        const response = await axios.post(BASE_URL + `/api/cart/${productId}/update`, { quantity: quantity }, {
+        const response = await axios.post(BASE_URL + `/api/cart/${productId}/update`, { "quantity": quantity, "user_id": localStorage.getItem("id") }, 
+        {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }

@@ -18,7 +18,9 @@ export default function Profile() {
 
     //load current user
     useEffect(() => {
-        if (localStorage.getItem('id') !== null) {
+
+        // localStorage.getItem('id')
+        if (localStorage.getItem('accessToken') !== null) {
             console.log(localStorage.getItem('accessToken'));
             const fetchProfile = async () => {
                 let response = await axios.get(BASE_URL + "/api/users/profile", {
@@ -32,6 +34,7 @@ export default function Profile() {
                 setFirstName(response.data.first_name)
                 setLastName(response.data.last_name)
                 setEmail(response.data.email)
+                localStorage.setItem("id", response.data.id)
             }
             fetchProfile();
             setLoggedIn(true)

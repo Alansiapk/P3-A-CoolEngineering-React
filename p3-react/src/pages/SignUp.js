@@ -10,8 +10,7 @@ export default function SignUp() {
 
     const [formState, setFormState] = useState({
         'email': '',
-        'first_name': '',
-        'last_name': '',
+        'username': '',
         'password': '',
         'confirm_password': ''
     })
@@ -34,13 +33,9 @@ export default function SignUp() {
     const signup = async () => {
         let errors = [];
 
-        if (!formState.first_name.match(/^[A-Za-z]+( [A-Za-z]+)*$/)) {
+        if (!formState.username.match(/^[A-Za-z]+( [A-Za-z]+)*$/)) {
             setInvalidName(true);
             errors.push('first_name');
-        }
-        if (!formState.last_name.match(/^[A-Za-z]+( [A-Za-z]+)*$/)) {
-            setInvalidName(true);
-            errors.push('last_name');
         }
         if (!formState.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
             setInvalidEmail(true);
@@ -73,16 +68,10 @@ export default function SignUp() {
                         <div className="d-flex">
                             <Form.Control className="me-2"
                                 type="text"
-                                name="first_name"
+                                name="username"
                                 value={formState.first_name}
                                 onChange={updateFormField}
-                                placeholder="First Name" />
-                            <Form.Control className="ms-2"
-                                type="text"
-                                name="last_name"
-                                value={formState.last_name}
-                                onChange={updateFormField}
-                                placeholder="Last Name" />
+                                placeholder="username" />
                         </div>
                         {invalidName === true ? <Form.Text style={{ color: 'red' }}>Please enter a valid first and last name</Form.Text> : null}
 

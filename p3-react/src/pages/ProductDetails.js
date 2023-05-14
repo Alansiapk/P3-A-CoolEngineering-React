@@ -45,6 +45,7 @@ export default function ProductDetails() {
                     })
                 console.log(response.data);
                 toast.success("Successfully added to cart");
+                alert("Item added to cart!");
                 return true;
             } catch (error) {
                 console.log(error)

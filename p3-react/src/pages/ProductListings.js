@@ -162,7 +162,7 @@ export default function ProductListings() {
                 {/* Search bar */}
                 <Col lg={3}>
                     <div className="input-box d-flex flex-row align-items-center ps-3 rounded mb-3">
-                        <FiSearch className="ms-1" />
+                        <FiSearch className="ms-1" onClick={search} />
                         <Form.Control type="text" name="nameSearch" value={nameSearch} onChange={(e) => setNameSearch(e.target.value)} placeholder="Search Aircon" className="py-2 border-0 bg-transparent rounded-0" />
                     </div>
                     <Accordion>

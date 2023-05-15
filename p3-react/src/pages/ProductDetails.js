@@ -72,16 +72,18 @@ export default function ProductDetails() {
                     </nav>
                 </div>
 
-                {currentProduct.product?.map((a) =>
-                    <img className="img-fluid" src={a.image_url} />
-                )}
+                {/* {currentProduct.product?.map((a) =>
+                 <img className="img-fluid" src={a.image_url} />
+                )} */}
+                <img src={currentProduct.image_url} className='img-fluid' alt="test-img" />
                 <h2>{currentProduct.name}</h2>
                 <p>SGD:{currentProduct.cost}</p>
                 <p>Brand:{currentProduct.brand?.name}</p>
                 <p>Category:{currentProduct.category?.name}</p>
                 <p>Application:{currentProduct.application?.name}</p>
-                <p>Features:{currentProduct.tag?.map((p, index) =>
-                                    index === currentProduct.tag?.length - 1 ? <span>{p.name}</span> : <span>{p.name}, </span>
+                <p>Features:{currentProduct.tags?.map((p, index) =>
+                                    // index === currentProduct.tag?.length - 1 ? <span>{p.name}</span> : <span>{p.name}, </span>
+                                    <span>{p.name}</span>
                                 )}</p>
                 <p>Description{currentProduct.description}</p>
                 <p>Warranty:{currentProduct.warranty}</p>

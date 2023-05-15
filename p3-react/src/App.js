@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ProductDetails from "./pages/ProductDetails";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -44,11 +45,14 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/product-details"></Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/orders"></Link>
+                </li>
               </ul>
-              <form className="d-flex">
+              {/* <form className="d-flex">
                 <input className="form-control me-2" type="text" placeholder="Search" />
                 <button className="btn btn-primary" type="button">Search</button>
-              </form>
+              </form> */}
             </div>
           </div>
         </nav>
@@ -72,6 +76,10 @@ function App() {
 
           <Route path="/signup" element={
             <SignUp />
+          } />
+
+          <Route path="/orders" element={
+            <Orders />
           } />
 
           <Route path="/product-details/:product_id" element={

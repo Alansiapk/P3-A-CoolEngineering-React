@@ -84,8 +84,11 @@ export default function ProductListings() {
             getSearch.tags = tagSearch
         }
 
+        console.log(tags);
+        console.log(tagSearch);
+        console.log(products)
+
         const response = await axios.post(BASE_URL + "/api/products/search", getSearch)
-        console.log("search results", response.data)
         setProducts(response.data)
     }
 
@@ -183,8 +186,8 @@ export default function ProductListings() {
                                     <Form.Group className="mb-2 me-3 me-lg-0 search-box">
                                         <Form.Label>Application</Form.Label>
                                         <Form.Select value={applicationSearch} onChange={updateApplication}>
-                                            {applications.map((m) =>
-                                                <option key={m[0]} name="applicationSearch" value={m[0]}>
+                                            {applications.map((m, index) =>
+                                                <option key={m[index]} name="applicationSearch" value={m[0]}>
                                                     {m[1]}
                                                 </option>
                                             )}

@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { Form, Accordion, Container, Row, Col, Card, Button } from "react-bootstrap";
-import { BASE_URL } from '../constant/Constant';
+
+const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
 
 export default function ProductListings() {
 

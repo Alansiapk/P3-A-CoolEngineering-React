@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from 'react-bootstrap';
 import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
-import { BASE_URL } from "../constant/Constant";
 
-//d
+const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
 
 
 export default function Orders() {

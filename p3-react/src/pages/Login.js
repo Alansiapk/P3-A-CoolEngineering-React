@@ -2,9 +2,9 @@ import React, { useState, useContext, useCallback } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
-import { BASE_URL } from '../constant/Constant';
 // import { UserContext } from '../context/UserContext';
 
+const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
 
 export default function Login() {
 

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { BASE_URL } from "../constant/Constant";
 
+
+const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
 
 export default function ShoppingCart() {
 
@@ -36,11 +37,11 @@ export default function ShoppingCart() {
         // });
 
         let response = await axios.get(BASE_URL + `/api/cart/${user_id}`,
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            })
+        {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        })
 
         const quantity = {}
         for (let r of response.data) {
@@ -54,7 +55,7 @@ export default function ShoppingCart() {
     }
 
     const deleteCartItem = async (productId) => {
-        const response = await axios.post(BASE_URL + `/api/cart/${productId}/delete`, { "user_id": localStorage.getItem("id") }, {
+        const response = await axios.post(BASE_URL + `/api/cart/${productId}/delete`, {"user_id": localStorage.getItem("id")}, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -79,12 +80,12 @@ export default function ShoppingCart() {
         // const variantId = e.target.name
         // const quantity = quantit
         console.log('update', productId, quantity)
-        const response = await axios.post(BASE_URL + `/api/cart/${productId}/update`, { "quantity": quantity, "user_id": localStorage.getItem("id") },
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            });
+        const response = await axios.post(BASE_URL + `/api/cart/${productId}/update`, { "quantity": quantity, "user_id": localStorage.getItem("id") }, 
+        {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        });
         if (response) {
             toast.success('Product updated in cart');
             await fetch();
@@ -93,19 +94,6 @@ export default function ShoppingCart() {
             toast.error('Something went wrong')
             return false;
         }
-    }
-
-    const handleCheckout = async () => {
-        
-        // if accesstoken is correct proceed into statement
-        // user id , href={BASE_URL + "/api/checkout/" + user_id}
-        const user_id = localStorage.getItem("id");
-        let response = await axios.get(BASE_URL + "/api/checkout/" + user_id, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        });
-        console.log("what is in response :", response);
     }
 
     return (<>
@@ -138,16 +126,14 @@ export default function ShoppingCart() {
                                                 </div>
                                             </div>
                                             <hr />
-
+                                            <a className="btn btn-dark btn-outline-light btn-block"
+                                                href={BASE_URL + "/api/checkout/" + user_id + '/checkout'}
+                                            >Checkout</a>
                                         </React.Fragment>
                                     )
                                 })}
                             </div>
 
-                            <button onClick={handleCheckout}>Checkout</button>
-                            {/* <a className="btn btn-dark btn-outline-light btn-block"
-                                onClick={handleCheckout}
-                            >Checkout</a> */}
                             <ToastContainer />
                         </Container>
 

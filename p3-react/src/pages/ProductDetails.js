@@ -4,9 +4,8 @@ import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Carousel } from "react-bootstrap";
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from '../constant/Constant';
 
-
-const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
 
 export default function ProductDetails() {
 

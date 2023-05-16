@@ -41,7 +41,7 @@ export default function Orders() {
                                 <th>#Order ID</th>
                                 <th>Order Date</th>
                                 <th>Shipping Address</th>
-                                <th>Details</th>
+                                <th>Order Status</th>
                             </tr>
                         </thead>
                         {orderItems.length ?

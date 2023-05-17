@@ -6,6 +6,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 const BASE_URL = "https://acoolengineering-express.onrender.com"
 
 export default function ProductDetails() {
@@ -25,7 +26,7 @@ export default function ProductDetails() {
 
     const addToCart = async () => {
         if (localStorage.getItem("accessToken")) {
-             console.log(localStorage.getItem("accessToken"))
+            console.log(localStorage.getItem("accessToken"))
             // let accessToken = localStorage.getItem("accessToken")
 
             console.log(product_id)
@@ -72,20 +73,31 @@ export default function ProductDetails() {
                     </nav>
                 </div>
 
-              
+
                 <img src={currentProduct.image_url} className='img-fluid' alt="test-img" />
                 <h2>{currentProduct.name}</h2>
                 <p>SGD:{currentProduct.cost}</p>
                 <p>Brand:{currentProduct.brand?.name}</p>
                 <p>Category:{currentProduct.category?.name}</p>
                 <p>Application:{currentProduct.application?.name}</p>
-                <p>Features:{currentProduct.tags?.map((p, index) =>
-                                   
-                                    <span>{p.name}</span>
-                                )}</p>
+                {/* <p>Features:{currentProduct.tags?.map((p, index) =>
+
+                    <span>{p.name}</span>
+                )}</p> */}
+                <p className="product-features">
+                    Features:{" "}
+                    {currentProduct.tags?.map((p, index) => (
+                        <span key={index} className="feature">
+                            {p.name}
+                            {index !== currentProduct.tags.length - 1 && ", "}
+                        </span>
+                    ))}
+                </p>
                 <p>Description{currentProduct.description}</p>
                 <p>Warranty:{currentProduct.warranty}</p>
-               
+
+                
+
                 <div className="d-grid mt-3 mb-4">
                     <Button onClick={() => { addToCart() }}>ADD TO CART</Button>
                 </div>

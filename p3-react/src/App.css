@@ -37,3 +37,12 @@
   }
 }
 
+.product-features .feature {
+  display: inline-block !important;
+  padding: 2px 8px !important;
+  background-color: #f5f5f5 !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  border-radius: 5px !important;
+}
+

@@ -7,7 +7,8 @@ import axios from 'axios';
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { Form, Accordion, Container, Row, Col, Card, Button } from "react-bootstrap";
 
-const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
+const BASE_URL = "https://acoolengineering-express.onrender.com"
+
 
 export default function ProductListings() {
 
@@ -162,7 +163,10 @@ export default function ProductListings() {
                 {/* Search bar */}
                 <Col lg={3}>
                     <div className="input-box d-flex flex-row align-items-center ps-3 rounded mb-3">
-                        <FiSearch className="ms-1" onClick={search} />
+                        
+                        <button onClick={search}><FiSearch className="ms-1"/></button>
+
+            
                         <Form.Control type="text" name="nameSearch" value={nameSearch} onChange={(e) => setNameSearch(e.target.value)} placeholder="Search Aircon" className="py-2 border-0 bg-transparent rounded-0" />
                     </div>
                     <Accordion>

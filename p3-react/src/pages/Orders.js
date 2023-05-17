@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from 'react-bootstrap';
 import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
+import jwtDecode from "jwt-decode";
 
-const BASE_URL = "https://3000-alansiapk-p3acoolengine-17bu1ep0dew.ws-us97.gitpod.io"
+const BASE_URL = "https://acoolengineering-express.onrender.com"
 
 
 export default function Orders() {
@@ -20,7 +21,8 @@ export default function Orders() {
     }, [])
 
     const fetch = async () => {
-        const response = await axios.get(BASE_URL + "/api/orders", {
+        const userId = jwtDecode(localStorage.getItem('accessToken')).id
+        const response = await axios.get(BASE_URL + `/api/orders/${userId}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -42,6 +44,9 @@ export default function Orders() {
                                 <th>Order Date</th>
                                 <th>Shipping Address</th>
                                 <th>Order Status</th>
+                                <th>Payment Type</th>
+                                <th>Total Cost</th>
+                                <th>Order Date</th>
                             </tr>
                         </thead>
                         {orderItems.length ?
@@ -51,7 +56,10 @@ export default function Orders() {
                                         <td>{o.id}</td>
                                         <td>{o.order_date.slice(0, 10)}</td>
                                         <td>{o.shipping_address_line_1}<br />{o.shipping_address_line_2}<br />{o.shipping_postal}</td>
-                                        <td>{o.order_status_id.name}</td>
+                                        <td>{o.orderStatus.order_status}</td>
+                                        <td>{o.payment_type}</td>
+                                        <td>{(o.total_cost)/100}</td>
+                                        <td>{o.order_date}</td>
 
                                     </tr>
                                 ))}

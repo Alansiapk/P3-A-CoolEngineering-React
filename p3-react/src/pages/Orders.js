@@ -37,7 +37,8 @@ export default function Orders() {
             <Container className="py-5 px-sm-0 px-lg-5">
                 <h2 className="text-center">My Orders</h2>
                 {loggedIn ?
-                    <Table variant='dark' striped bordered hover>
+                
+                    <Table variant='primary' striped bordered hover>
                         <thead>
                             <tr>
                                 <th>#Order ID</th>
@@ -50,6 +51,7 @@ export default function Orders() {
                             </tr>
                         </thead>
                         {orderItems.length ?
+                     
                             <tbody>
                                 {orderItems.map(o => (
                                     <tr>
@@ -64,6 +66,7 @@ export default function Orders() {
                                     </tr>
                                 ))}
                             </tbody>
+                        
                             :
                             <p className="py-4 lead text-center">You have no order items</p>
                         }

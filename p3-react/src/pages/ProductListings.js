@@ -7,6 +7,7 @@ import axios from 'axios';
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { Form, Accordion, Container, Row, Col, Card, Button } from "react-bootstrap";
 
+
 const BASE_URL = "https://acoolengineering-express.onrender.com"
 
 
@@ -144,7 +145,7 @@ export default function ProductListings() {
         setTagSearch([])
         setMinCostSearch("")
         setMaxCostSearch("")
-      
+
 
         const response = await axios.get(BASE_URL + "/api/products")
         setProducts(response.data)
@@ -156,17 +157,19 @@ export default function ProductListings() {
 
                 {/* header */}
                 <div className="text-center pt-5 pb-3">
-                    <h5>Shop</h5>
-                    <h2>Aircon Products</h2>
+
+                    <h2>Aircon Products List</h2>
                 </div>
 
                 {/* Search bar */}
                 <Col lg={3}>
                     <div className="input-box d-flex flex-row align-items-center ps-3 rounded mb-3">
-                        
-                        <button onClick={search}><FiSearch className="ms-1"/></button>
 
-            
+                        <button onClick={search} style={{ backgroundColor: 'green', color: 'white' }}>
+                            <FiSearch className="ms-1 m-2" />
+                        </button>
+
+
                         <Form.Control type="text" name="nameSearch" value={nameSearch} onChange={(e) => setNameSearch(e.target.value)} placeholder="Search Aircon" className="py-2 border-0 bg-transparent rounded-0" />
                     </div>
                     <Accordion>
@@ -235,7 +238,7 @@ export default function ProductListings() {
                                 </div>
                                 <div className="text-end">
                                     <Button onClick={search}>Search</Button>
-                                    <Button onClick={resetSearch} className="ms-2">Reset</Button>
+                                    <Button onClick={resetSearch} className="ms-2" style={{ backgroundColor: 'red', color: 'white' }}>Reset</Button>
                                 </div>
                             </Accordion.Body>
                         </Accordion.Item>

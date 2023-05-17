@@ -96,8 +96,8 @@ export default function Login() {
                 className="form-control" />
         </div>
         <button className="btn btn-primary mt-3" onClick={doLogin}>SIGN IN</button>
-        <p className="mt-3">Don't have account? Please sign up for to receive latest news</p>
-        <button className="btn btn-primary mt-3" onClick={signUpForm}>SignUp</button>
+        <p className="mt-5">Don't have account? Please sign up for to receive latest news</p>
+        <button className="btn btn-primary mt-3" style={{ backgroundColor: 'green', color: 'white' }} onClick={signUpForm}>SignUp</button>
 
     </>)
 

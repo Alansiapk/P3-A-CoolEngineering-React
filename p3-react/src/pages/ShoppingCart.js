@@ -121,7 +121,7 @@ export default function ShoppingCart() {
                                                         <h6>Quantity: </h6><Form.Control size="sm" onChange={updateFormField} name={c.product_id} type="text" value={quantity[c.product_id]} style={{ width: '30px' }} />
                                                         <Button onClick={() => { updateCartItem(c.product_id, quantity[c.product_id]) }} name={c.product_id} size='sm' className="ms-2 ms-md-4">Update</Button>
                                                     </div>
-                                                    <Button onClick={() => { deleteCartItem(c.product_id) }} variant='outline-secondary' size='sm' className="mt-3">Delete</Button>
+                                                    <Button onClick={() => { deleteCartItem(c.product_id) }} variant='danger' size='sm' className="mt-3">Delete</Button>
                                                     <h6 className="mt-4">Price: S${c.product.cost * c.quantity} (S${c.product.cost} / item)</h6>
                                                 </div>
                                             </div>

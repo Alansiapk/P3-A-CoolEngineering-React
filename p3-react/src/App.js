@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ProductDetails from "./pages/ProductDetails";
 import Orders from "./pages/Orders";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
 
 function App() {
   return (

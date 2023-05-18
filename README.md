@@ -1,5 +1,16 @@
 # P3-A-Cool Engineering
 
+![mockup](https://github.com/Alansiapk/P3-A-CoolEngineering-React/assets/122661925/1a9d1829-0c22-450a-9a6c-56ebc19d4f7a)
+
+Live demo for customers can be accessed [here](https://phenomenal-choux-91c842.netlify.app/).
+* Test Account: 
+    * Email: alicetu@gmail.com
+    * Password: alicetu123
+
+Live demo for admin/shop owners can be accessed [here](https://acoolengineering-express.onrender.com).
+* Test Account: 
+    * Email: EricChou@gmail.com
+    * Password: Eric123!
 ## Project Overview 
 
 **Context and Value Proposition**
